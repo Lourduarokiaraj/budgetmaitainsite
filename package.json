@@ -1,0 +1,22 @@
+{
+  "name": "budgetmaitainsite",
+  "version": "0.1.0",
+  "description": "Desktop home budget manager built with Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package": "electron-packager . BudgetMaitainSite --platform=win32 --arch=x64 --out=dist --overwrite"
+  },
+  "devDependencies": {
+    "electron": "^26.0.0"
+  },
+  "keywords": [
+    "budget",
+    "electron",
+    "desktop",
+    "family-budget",
+    "monthly-budget"
+  ],
+  "author": "Lourduarokiaraj",
+  "license": "MIT"
+}

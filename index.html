@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Family Budget</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header>
+        <h1>Family Monthly Budget</h1>
+        <p>Track expenses by category and manage your family budget.</p>
+      </header>
+
+      <main>
+        <!-- Month Selector -->
+        <section class="month-selector">
+          <label for="monthPicker">Select Month:</label>
+          <input type="month" id="monthPicker" />
+        </section>
+
+        <!-- Budget Categories Panel -->
+        <section class="categories-panel">
+          <div class="panel-header">
+            <h2>Budget Categories</h2>
+            <button id="addCategoryBtn" class="btn-secondary">+ Add Category</button>
+          </div>
+          <div id="categoriesList" class="categories-list"></div>
+        </section>
+
+        <!-- Category Budget Progress -->
+        <section class="budget-progress-panel">
+          <h2>Category Spending</h2>
+          <div id="budgetProgressList" class="budget-progress-list"></div>
+        </section>
+
+        <!-- Add Transaction Form -->
+        <section class="form-panel">
+          <h2>Add Transaction</h2>
+          <form id="transactionForm">
+            <div class="form-row">
+              <label for="description">Description</label>
+              <input type="text" id="description" placeholder="e.g., Grocery shopping" required />
+            </div>
+            <div class="form-row">
+              <label for="amount">Amount</label>
+              <input type="number" id="amount" step="0.01" required />
+            </div>
+            <div class="form-row split">
+              <div>
+                <label for="category">Category</label>
+                <select id="category" required>
+                  <option value="">Select a category</option>
+                </select>
+              </div>
+              <div>
+                <label for="type">Type</label>
+                <select id="type">
+                  <option value="expense">Expense</option>
+                  <option value="income">Income</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="date">Date</label>
+              <input type="date" id="date" />
+            </div>
+            <div class="form-actions">
+              <button type="submit">Add Transaction</button>
+              <button type="button" id="clearAll">Clear All</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Transactions List -->
+        <section class="table-panel">
+          <div class="table-header">
+            <h2>Transactions</h2>
+            <p id="transactionCount">0 records</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Date</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="transactionBody"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modal for Adding Category -->
+    <div id="categoryModal" class="modal">
+      <div class="modal-content">
+        <h3>Add New Category</h3>
+        <form id="categoryForm">
+          <div class="form-row">
+            <label for="categoryName">Category Name</label>
+            <input type="text" id="categoryName" placeholder="e.g., Groceries, Utilities" required />
+          </div>
+          <div class="form-row">
+            <label for="categoryColor">Color</label>
+            <input type="color" id="categoryColor" value="#38bdf8" />
+          </div>
+          <div class="form-actions">
+            <button type="submit">Add</button>
+            <button type="button" id="closeModal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for Setting Budget Limit -->
+    <div id="budgetModal" class="modal">
+      <div class="modal-content">
+        <h3 id="budgetModalTitle">Set Budget Limit</h3>
+        <form id="budgetForm">
+          <div class="form-row">
+            <label for="budgetLimit">Monthly Limit ($)</label>
+            <input type="number" id="budgetLimit" step="0.01" min="0" required />
+          </div>
+          <div class="form-actions">
+            <button type="submit">Set Limit</button>
+            <button type="button" id="closeBudgetModal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
